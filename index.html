@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>¡Compra tu hamburguesa! | Pedidos jueves, viernes y sábados</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="brand">
+    <strong>🍔 ¡COMPRA TU HAMBURGUESA!</strong>
+    <small>JUEVES • VIERNES • SÁBADOS · 3:00 PM - 10:00 PM</small>
+  </div>
+  <button class="btn-cart" id="abrirCarrito" aria-label="Abrir carrito">🛒 Carrito (<span id="contadorCarrito">0</span>)</button>
+</header>
+
+<section class="hero">
+  <img src="assets/hero.jpg" alt="Hamburguesas doble carne con queso cheddar" class="hero-img">
+  <div class="hero-txt">
+    <h1>¡COMPRA TU<br><span>HAMBURGUESA!</span></h1>
+    <p>El antojo que sí vale la pena.</p>
+    <a href="#menu" class="btn btn-gold">VER MENÚ</a>
+  </div>
+</section>
+
+<section class="estado-wrap">
+  <div id="estado" class="estado">
+    <b id="estadoTitulo"></b>
+    <span>Pedidos disponibles jueves, viernes y sábados de 3:00 PM a 10:00 PM.</span>
+  </div>
+</section>
+
+<main id="menu" class="menu">
+  <h2>🍔 NUESTRO MENÚ</h2>
+  <div class="grid">
+
+    <article class="card" data-id="sencilla">
+      <img src="assets/hamburguesa-sencilla.jpg" alt="Hamburguesa Sencilla" loading="lazy">
+      <div class="card-body">
+        <h3>🍔 HAMBURGUESA SENCILLA</h3>
+        <p class="precio">$12.000</p>
+        <p class="desc">Pan brioche, carne de res, queso cheddar, tocineta, cebolla caramelizada y salsa de la casa.</p>
+        <div class="fila"><span>Cantidad:</span>
+          <div class="qty"><button data-a="menos" aria-label="Menos">−</button><b class="q">1</b><button data-a="mas" aria-label="Más">+</button></div>
+        </div>
+        <label class="combo"><input type="checkbox" class="chk">
+          <span><b>Agregar combo</b><small>🍟 Papas + 🥤 gaseosa</small></span><em>+$6.000</em></label>
+        <button class="btn btn-red" data-a="agregar">AGREGAR AL CARRITO</button>
+      </div>
+    </article>
+
+    <article class="card" data-id="doble">
+      <img src="assets/hamburguesa-doble.jpg" alt="Hamburguesa Doble Carne" loading="lazy">
+      <div class="card-body">
+        <h3>🍔 HAMBURGUESA DOBLE CARNE</h3>
+        <p class="precio">$16.000</p>
+        <p class="desc">Pan brioche, doble carne, queso cheddar, tocineta, cebolla caramelizada y salsa de la casa.</p>
+        <div class="fila"><span>Cantidad:</span>
+          <div class="qty"><button data-a="menos" aria-label="Menos">−</button><b class="q">1</b><button data-a="mas" aria-label="Más">+</button></div>
+        </div>
+        <label class="combo"><input type="checkbox" class="chk">
+          <span><b>Agregar combo</b><small>🍟 Papas + 🥤 gaseosa</small></span><em>+$6.000</em></label>
+        <button class="btn btn-red" data-a="agregar">AGREGAR AL CARRITO</button>
+      </div>
+    </article>
+
+  </div>
+</main>
+
+<footer class="footer">© Hamburguesas · Pedidos por WhatsApp · Precios en pesos colombianos (COP)</footer>
+
+<!-- Panel del carrito -->
+<div class="overlay" id="overlay"></div>
+<aside class="panel" id="panel" aria-label="Carrito">
+  <div class="panel-head"><h2 id="panelTitulo">🛒 TU CARRITO</h2><button id="cerrarCarrito" aria-label="Cerrar">✕</button></div>
+
+  <!-- Vista 1: carrito -->
+  <section id="vCarrito" class="vista">
+    <div id="listaCarrito"></div>
+    <div class="total-row"><span>TOTAL</span><b id="totalCarrito">$0</b></div>
+    <button class="btn btn-gold" id="btnContinuar">CONTINUAR CON EL PEDIDO</button>
+    <button class="btn-link" id="btnVaciar">VACIAR CARRITO</button>
+  </section>
+
+  <!-- Vista 2: datos -->
+  <section id="vDatos" class="vista" hidden>
+    <h3>DATOS DEL CLIENTE</h3>
+    <label>Nombre *<input id="nombre" type="text" autocomplete="name"></label>
+    <label>Teléfono *<input id="telefono" type="tel" inputmode="tel" autocomplete="tel"></label>
+    <label>Dirección / lugar de entrega<input id="direccion" type="text"></label>
+    <label>Notas adicionales<textarea id="notas" rows="2"></textarea></label>
+    <h3>MÉTODO DE PAGO *</h3>
+    <div class="pagos">
+      <label class="pago"><input type="radio" name="pago" value="Efectivo"><span>💵 EFECTIVO</span></label>
+      <label class="pago"><input type="radio" name="pago" value="Transferencia"><span>💳 TRANSFERENCIA</span></label>
+    </div>
+    <div id="infoPago" class="info-pago"></div>
+    <p id="error" class="error" role="alert"></p>
+    <button class="btn btn-gold" id="btnRevisar">REVISAR PEDIDO</button>
+    <button class="btn-link" data-ir="vCarrito">← Volver al carrito</button>
+  </section>
+
+  <!-- Vista 3: resumen -->
+  <section id="vResumen" class="vista" hidden>
+    <h3>CONFIRMA TU PEDIDO</h3>
+    <div id="resumen" class="resumen"></div>
+    <button class="btn btn-wa" id="btnWhatsApp">📲 ENVIAR PEDIDO POR WHATSAPP</button>
+    <button class="btn-link" data-ir="vDatos">← EDITAR PEDIDO</button>
+  </section>
+</aside>
+
+<div id="toast" class="toast" role="status"></div>
+
+<a class="wa-float" id="waFloat" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <span>💬</span><small>¿Tienes alguna pregunta? Escríbenos</small>
+</a>
+
+<script src="script.js"></script>
+</body>
+</html>
