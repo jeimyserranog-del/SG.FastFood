@@ -7,7 +7,7 @@ const PRODUCTOS = {
 };
 const PRECIO_COMBO = 6000;
 // Pon en false si quieres probar el envío fuera de horario
-const BLOQUEAR_FUERA_DE_HORARIO = true;
+const BLOQUEAR_FUERA_DE_HORARIO = false;
 
 /* ================= UTILIDADES ================= */
 const $ = (s, r = document) => r.querySelector(s);
