@@ -1,5 +1,5 @@
 /* ================= CONFIGURACIÓN ================= */
-const WHATSAPP_NUMBER = "573112143342";
+const WHATSAPP_NUMBER = "573227789324";
 const DATOS_TRANSFERENCIA = { banco: "PENDIENTE", titular: "PENDIENTE", numero: "3112143342", llave: "@jeimy5551" };
 const PRODUCTOS = {
   sencilla: { nombre: "Hamburguesa Sencilla", precio: 12000 },
